@@ -1,0 +1,74 @@
+I, [2022-02-17T20:39:51.264148 #79809]  INFO -- Kitchen: -----> Starting Test Kitchen (v3.2.2)
+I, [2022-02-17T20:39:51.624469 #79809]  INFO -- Kitchen: -----> Cleaning up any prior instances of <default-Ubuntu>
+I, [2022-02-17T20:39:51.624837 #79809]  INFO -- Kitchen: -----> Destroying <default-Ubuntu>...
+I, [2022-02-17T20:39:51.626095 #79809]  INFO -- Kitchen: -----> Testing <default-Ubuntu>
+I, [2022-02-17T20:39:51.626373 #79809]  INFO -- Kitchen: -----> Creating <default-Ubuntu>...
+I, [2022-02-17T20:39:51.669105 #79809]  INFO -- Kitchen: Sending build context to Docker daemon  43.01kB
+I, [2022-02-17T20:39:51.717594 #79809]  INFO -- Kitchen: Step 1/17 : FROM ubuntu:20.04
+I, [2022-02-17T20:39:51.718410 #79809]  INFO -- Kitchen:  ---> 54c9d81cbb44
+I, [2022-02-17T20:39:51.719056 #79809]  INFO -- Kitchen: Step 2/17 : RUN [ ! -f "/sbin/initctl" ] || dpkg-divert --local --rename --add /sbin/initctl                 && ln -sf /bin/true /sbin/initctl
+I, [2022-02-17T20:39:51.719886 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.720516 #79809]  INFO -- Kitchen:  ---> 5c45cb0c4fc1
+I, [2022-02-17T20:39:51.721083 #79809]  INFO -- Kitchen: Step 3/17 : ENV DEBIAN_FRONTEND noninteractive
+I, [2022-02-17T20:39:51.722059 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.722098 #79809]  INFO -- Kitchen:  ---> b9554af8b224
+I, [2022-02-17T20:39:51.722113 #79809]  INFO -- Kitchen: Step 4/17 : ENV container docker
+I, [2022-02-17T20:39:51.722126 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.722138 #79809]  INFO -- Kitchen:  ---> 6721b25529de
+I, [2022-02-17T20:39:51.722151 #79809]  INFO -- Kitchen: Step 5/17 : RUN apt-get update
+I, [2022-02-17T20:39:51.725305 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725348 #79809]  INFO -- Kitchen:  ---> 60927d7401b8
+I, [2022-02-17T20:39:51.725368 #79809]  INFO -- Kitchen: Step 6/17 : RUN apt-get install -y sudo openssh-server curl lsb-release
+I, [2022-02-17T20:39:51.725382 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725395 #79809]  INFO -- Kitchen:  ---> 323f6247359c
+I, [2022-02-17T20:39:51.725409 #79809]  INFO -- Kitchen: Step 7/17 : RUN if ! getent passwd kitchen; then                   useradd -d /home/kitchen -m -s /bin/bash -p '*' kitchen;                 fi
+I, [2022-02-17T20:39:51.725425 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725439 #79809]  INFO -- Kitchen:  ---> 8fdac84826ed
+I, [2022-02-17T20:39:51.725451 #79809]  INFO -- Kitchen: Step 8/17 : RUN echo "kitchen ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/kitchen
+I, [2022-02-17T20:39:51.725463 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725475 #79809]  INFO -- Kitchen:  ---> 7952cd664ef9
+I, [2022-02-17T20:39:51.725492 #79809]  INFO -- Kitchen: Step 9/17 : RUN echo "Defaults !requiretty" >> /etc/sudoers.d/kitchen
+I, [2022-02-17T20:39:51.725505 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725517 #79809]  INFO -- Kitchen:  ---> b4a47c07bf86
+I, [2022-02-17T20:39:51.725528 #79809]  INFO -- Kitchen: Step 10/17 : RUN mkdir -p /home/kitchen/.ssh
+I, [2022-02-17T20:39:51.725540 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725556 #79809]  INFO -- Kitchen:  ---> e7f519033ac1
+I, [2022-02-17T20:39:51.725569 #79809]  INFO -- Kitchen: Step 11/17 : RUN chown -R kitchen /home/kitchen/.ssh
+I, [2022-02-17T20:39:51.725581 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725592 #79809]  INFO -- Kitchen:  ---> 01f2787c7424
+I, [2022-02-17T20:39:51.725604 #79809]  INFO -- Kitchen: Step 12/17 : RUN chmod 0700 /home/kitchen/.ssh
+I, [2022-02-17T20:39:51.725619 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725635 #79809]  INFO -- Kitchen:  ---> 2c7ce923d445
+I, [2022-02-17T20:39:51.725648 #79809]  INFO -- Kitchen: Step 13/17 : RUN touch /home/kitchen/.ssh/authorized_keys
+I, [2022-02-17T20:39:51.725660 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.725671 #79809]  INFO -- Kitchen:  ---> 90a0330e9c60
+I, [2022-02-17T20:39:51.725685 #79809]  INFO -- Kitchen: Step 14/17 : RUN chown kitchen /home/kitchen/.ssh/authorized_keys
+I, [2022-02-17T20:39:51.734349 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.734416 #79809]  INFO -- Kitchen:  ---> 936c7de7f647
+I, [2022-02-17T20:39:51.734433 #79809]  INFO -- Kitchen: Step 15/17 : RUN chmod 0600 /home/kitchen/.ssh/authorized_keys
+I, [2022-02-17T20:39:51.734455 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.734470 #79809]  INFO -- Kitchen:  ---> 79ef46afe937
+I, [2022-02-17T20:39:51.734483 #79809]  INFO -- Kitchen: Step 16/17 : RUN mkdir -p /run/sshd
+I, [2022-02-17T20:39:51.734495 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.734510 #79809]  INFO -- Kitchen:  ---> 1c1986324368
+I, [2022-02-17T20:39:51.734524 #79809]  INFO -- Kitchen: Step 17/17 : RUN echo ssh-rsa\ AAAAB3NzaC1yc2EAAAADAQABAAABAQDMM5E3Ur+9tWLg/o4R3IXXaD/wo0D+G0qL2QT4vkkSRxatbbRxjg1pRqIBdsbCjJA+MBrLJ048kSuC11Aw/XR+66q/XN9gJiht2GvAuCcg1OHbGcZu5eIVlk/NZhQJ+4MPTTA9vrKJtafAk7b6evWJo060Rl/9juIL2l7x1779xiynzIRiza8p/bX5Qw9PxWQUUehsKCfohF23l4okriZk5YuLTeCQ2Eis49RUXqh3U6vHc4pj2ABZttrt3vYyQdJ84w7iMgUo68YSU77YiRLsSP83fvAPrWVJv9d+VH7bGpd+Z7CZ9G6fjw0BQD0oFSWXGJngOU7xuALqt2v0apzH\ kitchen_docker_key >> /home/kitchen/.ssh/authorized_keys
+I, [2022-02-17T20:39:51.734536 #79809]  INFO -- Kitchen:  ---> Using cache
+I, [2022-02-17T20:39:51.734548 #79809]  INFO -- Kitchen:  ---> bc24f7a81134
+I, [2022-02-17T20:39:51.734564 #79809]  INFO -- Kitchen: Successfully built bc24f7a81134
+I, [2022-02-17T20:39:51.833375 #79809]  INFO -- Kitchen: 4ab16fa920e146702bf32291a7c3e79fa46753bcb1412570ab0611e3b0b94936
+I, [2022-02-17T20:39:52.208440 #79809]  INFO -- Kitchen: 0.0.0.0:49155
+I, [2022-02-17T20:39:52.208824 #79809]  INFO -- Kitchen: :::49155
+I, [2022-02-17T20:39:52.325154 #79809]  INFO -- Kitchen: -----> Converging <default-Ubuntu>...
+I, [2022-02-17T20:42:56.249841 #79809]  INFO -- Kitchen: -----> Setting up <default-Ubuntu>...
+I, [2022-02-17T20:42:56.251166 #79809]  INFO -- Kitchen: -----> Verifying <default-Ubuntu>...
+I, [2022-02-17T20:43:03.498516 #79809]  INFO -- Kitchen: -----> Destroying <default-Ubuntu>...
+I, [2022-02-17T20:43:03.498752 #79809]  INFO -- Kitchen: [Docker] Destroying Docker container 4ab16fa920e146702bf32291a7c3e79fa46753bcb1412570ab0611e3b0b94936
+I, [2022-02-17T20:43:03.546102 #79809]  INFO -- Kitchen: UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+I, [2022-02-17T20:43:03.546848 #79809]  INFO -- Kitchen: root                79916               79885               0                   20:39               ?                   00:00:00            sshd: /usr/sbin/sshd -D -o UseDNS=no -o UsePAM=no -o PasswordAuthentication=yes -o UsePrivilegeSeparation=no -o PidFile=/tmp/sshd.pid [listener] 0 of 10-100 startups
+I, [2022-02-17T20:43:03.546881 #79809]  INFO -- Kitchen: root                79954               79916               0                   20:39               ?                   00:00:00            sshd: kitchen [priv]
+I, [2022-02-17T20:43:03.546901 #79809]  INFO -- Kitchen: vagrant             79956               79954               0                   20:39               ?                   00:00:00            sshd: kitchen@notty
+I, [2022-02-17T20:43:03.546918 #79809]  INFO -- Kitchen: root                82937               79916               0                   20:42               ?                   00:00:00            nginx: master process /usr/sbin/nginx
+I, [2022-02-17T20:43:03.546936 #79809]  INFO -- Kitchen: www-data            82938               82937               0                   20:42               ?                   00:00:00            nginx: worker process
+I, [2022-02-17T20:43:03.913531 #79809]  INFO -- Kitchen: 4ab16fa920e146702bf32291a7c3e79fa46753bcb1412570ab0611e3b0b94936
+I, [2022-02-17T20:43:04.834798 #79809]  INFO -- Kitchen: 4ab16fa920e146702bf32291a7c3e79fa46753bcb1412570ab0611e3b0b94936
+I, [2022-02-17T20:43:04.847976 #79809]  INFO -- Kitchen: -----> Test Kitchen is finished. (3m13.58s)
